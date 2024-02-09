@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма регистрации</title>
+</head>
+<body>
+<h1>Регистрация трудоспособных граждан в едином реестре</h1>
+<h2>Данные гражданина</h2>
+<table>
+    <tr>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Год рождения</th>
+    </tr>
+    <tr th:each="p: ${citizens}" >
+
+        <td th:text="${p.surname}"></td>
+        <td th:text="${p.name}"></td>
+        <td th:text="${p.birthdate}"></td>
+    </tr>
+</table>
+<h2>Введите данные</h2>
+<form action="/citizens" method="post">
+    Surname:   <input type="text" name="surname"><br />
+    Name:      <input type="text" name="name"><br />
+    Birthdate: <input type="number" step="any" name="birthdate"><br />
+    <button type="submit">Добавить</button>
+</form>
+</body>
+</html>
